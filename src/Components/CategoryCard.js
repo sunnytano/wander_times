@@ -1,13 +1,13 @@
 import React from 'react'
 
-class CategoryContainer extends React.Component{
+class CategoryCard extends React.Component{
     render(){
         return(
             <div>
-
+                
             </div>
         )
     }
 }
 
-export default CategoryContainer
+export default CategoryCard

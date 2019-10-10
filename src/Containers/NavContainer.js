@@ -1,6 +1,6 @@
 import React from 'react'
-import SearchBar from './SearchBar'
-import AccountBar from './AccountBar'
+import SearchBar from '../Components/SearchBar'
+import AccountBar from '../Components/AccountBar'
 
 class NavContainer extends React.Component{
     render(){
