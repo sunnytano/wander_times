@@ -9,6 +9,9 @@ class App extends React.Component{
   render(){
     return(
       <div>
+        <h1 style={{textAlign:"center", color: "green"}}>
+          Welcome to Wander Times
+        </h1>
         <NavContainer />
         <CategoryContainer />
         <ArticleContainer />

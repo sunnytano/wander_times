@@ -4,9 +4,11 @@ class AccountBar extends React.Component{
     render(){
         return(
             <div>
-                <button>Login</button>
-                <button>Signup</button>
-                <button>Profile</button>
+                <div className="account-bar">
+                    <button>Login</button>
+                    <button>Signup</button>
+                    <button>Profile</button>
+                </div>
             </div>
         )
     }
