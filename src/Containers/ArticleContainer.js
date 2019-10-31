@@ -4,15 +4,16 @@ import ArticleCard from '../Components/ArticleCard'
 class ArticleContainer extends React.Component{
 
     render(){
-        console.log(this.props.articles)
-        const filteredArticles = this.props.articles.filter(article=>{
-            return article.title.toLowerCase().includes(this.props.filter.toLowerCase())
+        let articles = this.props.articles.map(article=>{
+            return <ArticleCard
+                key={article.id}
+                article={article}
+            />
         })
         return(
             <div>
-                <ArticleCard articles={filteredArticles} />
-                </div>
-
+                {articles}
+            </div>
         )
     }
 }
