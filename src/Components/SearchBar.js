@@ -3,7 +3,7 @@ import React from 'react'
 class SearchBar extends React.Component{
 
     state = {
-        newInput: ""
+        newInput: "",
     }
 
     handleSubmit = e => {
@@ -21,11 +21,12 @@ class SearchBar extends React.Component{
     }
 
     render(){
-        console.log("new input here ", this.state.newInput)
+        console.log(this.state)
+        // console.log("new input here ", this.state.newInput)
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" 
+                    <input 
                            onChange={this.handleChange}
                            placeholder="search articles"
                            name="newInput"
