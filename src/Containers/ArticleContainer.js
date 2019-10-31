@@ -3,28 +3,16 @@ import ArticleCard from '../Components/ArticleCard'
 
 class ArticleContainer extends React.Component{
 
-    state ={
-        loading: true
-    }
-
     render(){
         console.log(this.props.articles)
+        const filteredArticles = this.props.articles.filter(article=>{
+            return article.title.toLowerCase().includes(this.props.filter.toLowerCase())
+        })
         return(
             <div>
-                <div>
-                {
-                    this.state.loading ? 
-                    null
-                    :
-                    this.props.articles.map(article =>{
-                        return <ArticleCard
-                                key={article.id}
-                                article={article} />
-                    })
-                }
-                <ArticleCard />
+                <ArticleCard articles={filteredArticles} />
                 </div>
-            </div>
+
         )
     }
 }

@@ -7,7 +7,7 @@ class NavContainer extends React.Component{
         return(
             <div>
                 <AccountBar />
-                <SearchBar />
+                <SearchBar changeFilter={this.props.changeFilter}/>
             </div>
         )
     }
