@@ -1,4 +1,17 @@
 .account-bar {
   text-align: right;
+}
+
+#article-card-container {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-content: space-between;
+  margin: 0 5px;
   padding: 10px;
+}
+
+#category-container {
+  width: 100vw;
+  height: 40vh;
+  background-color: green;
 }

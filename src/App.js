@@ -39,9 +39,10 @@ class App extends React.Component{
         <NavContainer changeFilter={this.changeFilter}/>
         <CategoryContainer />
         <ArticleContainer articles={this.state.articles.filter(article=>{
-          return article.title.toLowerCase().includes(this.state.filter.toLowerCase())
+          return article.title.toLowerCase().includes(this.state.filter.toLowerCase()) ||
+                 article.overview.toLowerCase().includes(this.state.filter.toLowerCase())
         })}
-                          filter={this.state.filter}/>
+        />
       </div>
     )
   }

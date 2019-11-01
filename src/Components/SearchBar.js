@@ -21,8 +21,6 @@ class SearchBar extends React.Component{
     }
 
     render(){
-        console.log(this.state)
-        // console.log("new input here ", this.state.newInput)
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>

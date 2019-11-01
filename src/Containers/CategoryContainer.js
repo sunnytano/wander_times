@@ -4,7 +4,7 @@ import CategorCard from '../Components/CategoryCard'
 class CategoryContainer extends React.Component{
     render(){
         return(
-            <div>
+            <div id="category-container">
                 <CategorCard />
             </div>
         )
