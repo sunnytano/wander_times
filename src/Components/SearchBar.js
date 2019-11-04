@@ -1,4 +1,6 @@
 import React from 'react'
+import { Fragment } from 'react';
+import { Input } from 'semantic-ui-react'
 
 class SearchBar extends React.Component{
 
@@ -24,12 +26,14 @@ class SearchBar extends React.Component{
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input 
+                <Fragment className="ui icon input">
+                    <Input 
                            onChange={this.handleChange}
                            placeholder="search articles"
                            name="newInput"
                            value={this.state.newInput} /> 
-                    <input type="submit"/>
+                     <i aria-hidden="true" className="search circular link icon"></i>
+                    </Fragment>
                 </form>
             </div>
         )

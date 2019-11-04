@@ -1,21 +1,22 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Button, Image } from 'semantic-ui-react'
 
 class ArticleCard extends React.Component{
     render(){
-        const { title, author, overview, image } = this.props.article
+        const { title, author, overview, image, url } = this.props.article
         return(
             <Card>
-            <Image src={image} wrapped ui={false} />
-            <Card.Content>
-            <Card.Header>{title}</Card.Header>
-            <Card.Meta>
-                <span className='date'>{author}</span>
-            </Card.Meta>
-            <Card.Description>
-                {overview}
-            </Card.Description>
+                <Image src={image} wrapped ui={false} />
+                <Card.Content>
+                    <Card.Header href={url}>{title}</Card.Header>
+                    <Card.Meta>
+                    <span className='author'>{author}</span>
+                    </Card.Meta>
+                    <Card.Description>
+                        {overview}
+                    </Card.Description>
             </Card.Content>
+            <Button class="ui button">Add Favorite</Button>
         </Card>
             
         )
