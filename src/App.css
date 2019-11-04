@@ -6,12 +6,34 @@
   display: grid;
   grid-template-columns: repeat(3,1fr);
   align-content: space-between;
-  margin: 0 5px;
-  padding: 10px;
+  /* margin: 0 5px; */
+  padding: 25px 10% 2em 10%;
 }
 
 #category-container {
   width: 100vw;
-  height: 40vh;
-  background-color: green;
+  height: 30vh;
+  background-color: gray;
+  text-align: center;
+  margin: auto;
+  padding: 25px 20% 2em 10%;
 }
+
+.category-card-tech {
+ margin: auto; 
+ color: white;
+ font-size: 8em;
+ padding: 55px 10% 2em 15%;
+}
+
+.category-card-travel {
+  color: white;
+  font-size: 8em;
+  padding: 55px 5% 2em 15%;
+ }
+
+ #search-bar {
+  margin: 10px; 
+  width: 20vw;
+  height: 5vh;
+ }

@@ -27,7 +27,7 @@ class SearchBar extends React.Component{
             <div>
                 <form onSubmit={this.handleSubmit}>
                 <Fragment className="ui icon input">
-                    <Input 
+                    <Input id="search-bar"
                            onChange={this.handleChange}
                            placeholder="search articles"
                            name="newInput"
