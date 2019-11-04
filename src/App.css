@@ -4,10 +4,10 @@
 
 #article-card-container {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
   align-content: space-between;
-  /* margin: 0 5px; */
-  padding: 25px 10% 2em 10%;
+  margin: auto;
+  padding: 25px 2% 2em 2%;
 }
 
 #category-container {
