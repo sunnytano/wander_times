@@ -26,32 +26,48 @@ body {
 
 #category-container {
   width: 100vw;
-  height: 30vh;
+  height: 26vh;
   background-color: gray;
   text-align: center;
   margin: auto;
   padding: 25px 20% 2em 10%;
+  justify-content: space-around;
 }
 
 .category-card-tech {
- margin: auto; 
+ /* margin: auto; 
  color: white;
- font-size: 8em;
+ font-size: 5em;
  padding: 55px 10% 2em 15%;
- /* font-family: 'Montserrat', sans-serif; */
- font-family: 'Libre Franklin', sans-serif;
+ font-family: 'Montserrat', sans-serif;
+ /* font-family: 'Libre Franklin', sans-serif;  */
+ width: 50vw;
+ height: 20vh;
+ font-size: 5em;
+ font-family: 'Montserrat', sans-serif;
+ padding: 30px 10% 1em 15%;
+ text-align: center;
+ border-width: 5px;
 }
 
 .category-card-travel {
-  color: white;
-  font-size: 8em;
+  /* color: white;
+  font-size: 5em;
   padding: 55px 5% 2em 15%;
-  /* font-family: 'Montserrat', sans-serif; */
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Libre Franklin', sans-serif; */
+  width: 50vw;
+  height: 20vh;
+  font-size: 5em;
+  font-family: 'Montserrat', sans-serif;
+  padding: 30px 5% 1em 15%;
+  text-align: center;
+  border-width: 5px;
  }
 
  #search-bar {
   margin: 10px; 
   width: 20vw;
   height: 5vh;
+  
  }

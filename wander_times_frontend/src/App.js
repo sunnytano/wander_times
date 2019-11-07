@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import ArticleContainer from './Containers/ArticleContainer'
 import CategoryContainer from './Containers/CategoryContainer'
 import NavContainer from './Containers/NavContainer'
-// import MainContainer from './Containers/MainContainer'
+import MainContainer from './Containers/MainContainer'
 
 class App extends React.Component{
   state = {
@@ -16,6 +15,7 @@ class App extends React.Component{
   componentDidMount(){
     // let url = "https://newsapi.org/v2/everything?q=technology&from=2019-09-10&sortBy=publishedAt&apiKey=f0a7beb8be6040cfadf7471e6a6676b4"
     let url = "http://localhost:3010/api/v1/articles"
+   
     fetch(url)
     .then(resp=>resp.json())
     .then(article=>{
@@ -25,20 +25,26 @@ class App extends React.Component{
     })
   }
 
-  changeFilter = (filterInput) => {
+  // changeFilter = (filterInput) => {
+  //   console.log(filterInput)
+  //   this.setState({
+  //     filter: filterInput
+  //   })
+  // }
+
+  handleSearch = (event) => {
     this.setState({
-      filter: filterInput
+      filter: event.target.value
     })
   }
 
-  changeCategory = (filterInput) => {
+  changeCategory = (category) => {
     this.setState({
-      selectedCategory: filterInput
+      selectedCategory: category
     })
   }
 
   categoryFilter = () => {
-    console.log(this.state.selectedCategory)
     let selected;
     switch(this.state.selectedCategory){
       case "tech":
@@ -60,22 +66,20 @@ class App extends React.Component{
     //   return article.title.toLowerCase().includes(this.state.filter.toLowerCase()) ||
     //          article.overview.toLowerCase().includes(this.state.filter.toLowerCase())
     // })}
-    console.log(this.state.articles)
     return(
+    
       <div>
         <h1 style={{textAlign:"center", color: "green"}}>
         </h1>
-        <NavContainer changeFilter={this.changeFilter}/>
+        <NavContainer handleSearch={this.handleSearch}/>
         <CategoryContainer articles={this.state.articles}
                               changeCategory={this.changeCategory}
                               categoryFilter={this.categoryFilter}
                            />
-        <ArticleContainer 
-        changeCategory={this.changeCategory}
-        articles={this.categoryFilter()}
-        filter={this.state.filter}
-        />
-      </div>
+        <MainContainer
+              articles={this.categoryFilter()}
+              filter={this.state.filter} />
+      </div>  
     )
   }
 }

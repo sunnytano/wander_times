@@ -9,23 +9,25 @@ class SearchBar extends React.Component{
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.changeFilter(this.state.newInput)
+        this.props.handleSearch(this.state.newInput)
         this.setState({
             newInput: ""
         })
     }
 
     handleChange = e => {
+        console.log(e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
     render(){
+        //    <Fragment className="ui icon input">
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                <Fragment className="ui icon input">
+                <Fragment>
                     <Input id="search-bar"
                            onChange={this.handleChange}
                            placeholder="search articles"
