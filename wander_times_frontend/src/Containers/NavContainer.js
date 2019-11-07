@@ -6,7 +6,9 @@ class NavContainer extends React.Component{
     render(){
         return(
             <div>
-                <AccountBar />
+                <AccountBar currentUser={this.props.currentUser}
+                            logout={this.props.logout}
+                />
                 <SearchBar handleSearch={this.props.handleSearch}/>
             </div>
         )

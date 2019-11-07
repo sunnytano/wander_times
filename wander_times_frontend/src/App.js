@@ -1,15 +1,17 @@
-import React from 'react';
+import React,{ Fragment } from 'react';
 import './App.css';
 import CategoryContainer from './Containers/CategoryContainer'
 import NavContainer from './Containers/NavContainer'
 import MainContainer from './Containers/MainContainer'
-
+import Login from './Components/Login'
+import { Switch, Route, } from 'react-router-dom'
 class App extends React.Component{
   state = {
     articles: [],
     loading: true, 
     filter: "",
-    selectedCategory: null
+    selectedCategory: null, 
+    currentUser: null
   }
 
   componentDidMount(){
@@ -23,8 +25,39 @@ class App extends React.Component{
         articles: article,
       })
     })
+    const token=localStorage.getItem("token")
+    if(token){
+      fetch("http://localhost:3010/api/v1/auto_login", {
+              headers: {
+                "Authorization": token
+            }
+          })
+          .then(res => res.json())
+          .then(response=>{
+            if(response.errors){
+              localStorage.removeItem("user_id")
+              alert(response.errors)
+            } else{
+              this.setState({
+                currentUser: response
+              })
+            }
+          })
+        }
+      }
+
+  setCurrentUser = user =>{
+    this.setState({
+      currentUser: user
+    })
   }
 
+  logout = () =>{
+    this.setState({
+      currentUser: null
+    })
+    this.props.history.push('/login')
+  }
   // changeFilter = (filterInput) => {
   //   console.log(filterInput)
   //   this.setState({
@@ -69,16 +102,33 @@ class App extends React.Component{
     return(
     
       <div>
-        <h1 style={{textAlign:"center", color: "green"}}>
+        <h1 href="/" style={{textAlign:"center", color: "green"}}> HOME
         </h1>
-        <NavContainer handleSearch={this.handleSearch}/>
-        <CategoryContainer articles={this.state.articles}
-                              changeCategory={this.changeCategory}
-                              categoryFilter={this.categoryFilter}
-                           />
+       
+        <NavContainer currentUser={this.state.currentUser}
+                      handleSearch={this.handleSearch}
+                      logout={this.logout}
+                      />
+           <Switch>
+          <Route path='/login' 
+                 render={(routerProps)=>{
+                     return <Login 
+                     setCurrentUser={this.setCurrentUser} 
+                   {...routerProps}
+            />
+          }}></Route>
+          <Route path='/' render={(routerProps)=>{
+            return  <Fragment> <CategoryContainer articles={this.state.articles}
+            changeCategory={this.changeCategory}
+            categoryFilter={this.categoryFilter}
+         />
         <MainContainer
-              articles={this.categoryFilter()}
-              filter={this.state.filter} />
+        articles={this.categoryFilter()}
+        filter={this.state.filter} />
+          </Fragment>
+          }}>
+          </Route >
+        </Switch>
       </div>  
     )
   }
