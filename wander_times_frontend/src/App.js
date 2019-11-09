@@ -8,6 +8,7 @@ import { Switch, Route, } from 'react-router-dom'
 class App extends React.Component{
   state = {
     articles: [],
+    selectedArticles: [],
     loading: true, 
     filter: "",
     selectedCategory: null, 
@@ -23,6 +24,7 @@ class App extends React.Component{
     .then(article=>{
       this.setState({
         articles: article,
+        selectedArticles: article
       })
     })
     const token=localStorage.getItem("token")
@@ -100,11 +102,9 @@ class App extends React.Component{
     //          article.overview.toLowerCase().includes(this.state.filter.toLowerCase())
     // })}
     return(
-    
       <div>
-        <h1 href="/" style={{textAlign:"center", color: "green"}}> HOME
+        <h1 href="/" style={{textAlign:"center", color: "dark grey"}}> THE WANDER TIMES
         </h1>
-       
         <NavContainer currentUser={this.state.currentUser}
                       handleSearch={this.handleSearch}
                       logout={this.logout}
@@ -120,14 +120,14 @@ class App extends React.Component{
           <Route path='/' render={(routerProps)=>{
             return  <Fragment> <CategoryContainer articles={this.state.articles}
             changeCategory={this.changeCategory}
-            categoryFilter={this.categoryFilter}
+            categoryFilter={this.categoryFilter} {...routerProps}
          />
         <MainContainer
         articles={this.categoryFilter()}
         filter={this.state.filter} />
           </Fragment>
           }}>
-          </Route >
+          </Route>
         </Switch>
       </div>  
     )
