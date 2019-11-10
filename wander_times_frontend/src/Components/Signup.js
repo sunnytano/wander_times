@@ -30,7 +30,8 @@ class Signup extends React.Component {
             } else {
                 localStorage.setItem("token", response.token)
                 this.props.setCurrentUser(response.user)
-                this.props.history.push(`users/${response.user.id}`)
+                // this.props.history.push(`users/${response.user.id}`)
+                this.props.history.push('/home')
             }
         })
     }

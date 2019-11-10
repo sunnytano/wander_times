@@ -5,6 +5,7 @@ import NavContainer from './Containers/NavContainer'
 import MainContainer from './Containers/MainContainer'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
+import Profile from './Components/Profile'
 import { Switch, Route, } from 'react-router-dom'
 
 class App extends React.Component{
@@ -112,6 +113,7 @@ class App extends React.Component{
                       logout={this.logout}
                       />
            <Switch>
+          <Route path='/users/:id' component={Profile} />
           <Route path='/login' 
                  render={(routerProps)=>{
                      return <Login 
