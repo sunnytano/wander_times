@@ -12,12 +12,13 @@ class AccountBar extends React.Component{
                 ?
                     <Fragment>
                     <h3>This is the current user, {this.props.currentUser.username}</h3>
+                    <Link to='/profile'>Profile</Link>
                     <Link onClick={this.props.logout}>Logout</Link>
                     </Fragment>
             :
                 <div className="account-bar">
+                    <Link to='/signup'>Signup</Link>
                     <Link to='/login'>Login</Link>
-                    <Link to='/profile'>Profile</Link>
                 </div>
                 }
             </div>

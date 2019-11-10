@@ -4,7 +4,9 @@ import CategoryContainer from './Containers/CategoryContainer'
 import NavContainer from './Containers/NavContainer'
 import MainContainer from './Containers/MainContainer'
 import Login from './Components/Login'
+import Signup from './Components/Signup'
 import { Switch, Route, } from 'react-router-dom'
+
 class App extends React.Component{
   state = {
     articles: [],
@@ -58,7 +60,7 @@ class App extends React.Component{
     this.setState({
       currentUser: null
     })
-    this.props.history.push('/login')
+    this.props.history.push('/')
   }
   // changeFilter = (filterInput) => {
   //   console.log(filterInput)
@@ -113,6 +115,13 @@ class App extends React.Component{
           <Route path='/login' 
                  render={(routerProps)=>{
                      return <Login 
+                     setCurrentUser={this.setCurrentUser} 
+                   {...routerProps}
+            />
+          }}></Route>
+           <Route path='/signup' 
+                 render={(routerProps)=>{
+                     return <Signup 
                      setCurrentUser={this.setCurrentUser} 
                    {...routerProps}
             />
