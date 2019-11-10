@@ -1,5 +1,4 @@
 import React from 'react'
-import { Fragment } from 'react'
 import { Grid } from 'semantic-ui-react'
 
 class CategoryCard extends React.Component{

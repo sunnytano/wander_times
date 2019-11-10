@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Grid, Menu } from 'semantic-ui-react'
+// import { Grid, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 class AccountBar extends React.Component{
@@ -17,7 +17,7 @@ class AccountBar extends React.Component{
             :
                 <div className="account-bar">
                     <Link to='/login'>Login</Link>
-                    <Link>Profile</Link>
+                    <Link to='/profile'>Profile</Link>
                 </div>
                 }
             </div>

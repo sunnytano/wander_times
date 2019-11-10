@@ -4,7 +4,7 @@ import ArticleContainer from './ArticleContainer'
 class MainContainer extends React.Component{
     render(){
  
-        console.log(this.props.articles)
+        // console.log(this.props.articles)
         return(
             <div>
          <ArticleContainer 
