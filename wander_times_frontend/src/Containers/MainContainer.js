@@ -4,7 +4,6 @@ import ArticleContainer from './ArticleContainer'
 
 class MainContainer extends React.Component{
     render(){
- 
         // console.log(this.props.articles)
         return(
             <div>
@@ -14,8 +13,10 @@ class MainContainer extends React.Component{
             })}      
             articles={this.props.articles}
             addLikes={this.props.addLikes}
+            deleteLikes={this.props.deleteLikes}
             currentUser={this.props.currentUser}
             selectedArticle={this.props.selectedArticle}
+            likes={this.props.likes}
         />
             </div>
         )

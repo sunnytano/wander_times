@@ -21,7 +21,6 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    // let url = "https://newsapi.org/v2/everything?q=technology&from=2019-09-10&sortBy=publishedAt&apiKey=f0a7beb8be6040cfadf7471e6a6676b4"
     let url = "http://localhost:3010/api/v1/articles"
    
     fetch(url)
@@ -55,7 +54,8 @@ class App extends React.Component{
 
   setCurrentUser = user =>{
     this.setState({
-      currentUser: user
+      currentUser: user,
+      likes: user.likes
     })
   }
 
@@ -107,6 +107,23 @@ class App extends React.Component{
     })
   }
 
+    deleteLikes = articleId => {
+    let url= `http://localhost:3010/api/v1/likes/${articleId}`
+    fetch(url,{
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(()=>{
+      let filtered=this.state.likes.filter(liked=>liked.id !== articleId)
+      this.setState({
+        likes: filtered
+      })
+    })
+  }
+
   selectedArticle = article => {
     console.log(article)
     this.setState({
@@ -115,10 +132,6 @@ class App extends React.Component{
   }
   
   render(){
-    // {this.state.articles.filter(article=>{
-    //   return article.title.toLowerCase().includes(this.state.filter.toLowerCase()) ||
-    //          article.overview.toLowerCase().includes(this.state.filter.toLowerCase())
-    // })}
     return(
       <div>
         <h1 href="/" style={{textAlign:"center", color: "dark grey"}}> THE WANDER TIMES
@@ -128,7 +141,17 @@ class App extends React.Component{
                       logout={this.logout}
                       />
            <Switch>
-          <Route path='/users/:id' component={Profile} />
+           <Route path='/users/:id' 
+                  render={(routerProps)=>{
+                    return <Profile
+                    deleteLikes={this.deleteLikes}
+                    likes={this.state.likes}
+                    articles={this.state.articles}
+                    selectedArticle={this.selectedArticle}
+                    deleteLikes={this.deleteLikes}
+                  {...routerProps}
+           />
+         }}></Route>
           <Route path='/login' 
                  render={(routerProps)=>{
                      return <Login 
@@ -154,6 +177,8 @@ class App extends React.Component{
         addLikes={this.addLikes}
         currentUser={this.state.currentUser}
         selectedArticle={this.selectedArticle}
+        deleteLikes={this.deleteLikes}
+        likes={this.state.likes}
         />
           </Fragment>
           }}>

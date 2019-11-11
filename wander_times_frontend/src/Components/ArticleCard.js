@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Button, Image, Form } from 'semantic-ui-react'
 
 class ArticleCard extends React.Component{
-
+ 
     handleSubmit = (event, user_id, article_id) => {
         event.preventDefault()
         let url="http://localhost:3010/api/v1/likes"
@@ -22,12 +22,6 @@ class ArticleCard extends React.Component{
         .then(response=>this.props.addLikes(response))
     }
 
-    handleClick = () => {
-        // console.log(this.props.article)
-        this.props.selectedArticle(this.props.article)
-    }
-
-
     render(){
         // console.log(this.props)
         const { title, author, overview, image, url } = this.props.article
@@ -43,9 +37,13 @@ class ArticleCard extends React.Component{
                         {overview}
                     </Card.Description>
             </Card.Content>
-            <Form onSubmit={(event)=>this.handleSubmit(event, this.props.currentUser.id, this.props.article.id)}>
-            <Button type="submit" className="ui button">Add Favorite</Button>
-            </Form>
+            {
+                this.props.addLikes
+                ?
+                 <Button onClick={(event)=>this.handleSubmit(event, this.props.currentUser.id, this.props.article.id)} className="ui button">Add Favorite</Button>
+                :
+                 <Button onClick={()=>{this.props.deleteLikes(this.props.likedId)}} className="ui button">Remove Favorite</Button>
+            }
         </Card>
             
         )

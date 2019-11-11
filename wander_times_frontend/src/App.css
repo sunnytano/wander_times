@@ -16,15 +16,7 @@ body {
   text-align: right;
 }
 
-#article-card-container {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  align-content: space-between;
-  margin: auto;
-  padding: 25px 2% 2em 2%;
-}
-
-.liked-card-container {
+.article-card-container {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   align-content: space-between;

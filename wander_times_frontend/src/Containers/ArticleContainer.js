@@ -7,14 +7,16 @@ class ArticleContainer extends React.Component{
         let articles = this.props.articles.map(article=>{
            return <ArticleCard
                 key={article.id}
+                likes={this.props.likes}
                 article={article}
                 addLikes={this.props.addLikes}
+                deleteLikes={this.props.deleteLikes}
                 currentUser={this.props.currentUser}
                 selectedArticle={this.props.selectedArticle}
             />
         })
         return(
-            <div id="article-card-container">
+            <div className="article-card-container">
                 {articles}
             </div>
         )

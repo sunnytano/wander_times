@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Grid, Segment, Image, Loader } from 'semantic-ui-react'
-import LikeCard from './LikeCard'
+import ArticleCard from './ArticleCard'
 
 class Profile extends React.Component{
     state={
@@ -20,8 +20,7 @@ class Profile extends React.Component{
     }
 
     render(){
-    console.log(this.state.user)
-     const { user } = this.state
+    const { user } = this.state
 		if(user){
 			return (
                 <Fragment>
@@ -34,16 +33,15 @@ class Profile extends React.Component{
 						</Segment>
 					</Grid.Column>
 				</Grid>
-                <Segment>
-                            <h3>Favorite Articles</h3>
-                                <div className="liked-card-container">{this.state.user.likes.map(liked=>{
-                                    return  <LikeCard 
-                                    user={this.state.user}
-                                    article={liked.article}
-                                    />
-                                })}
-                                </div>
-                        </Segment>
+                            <h3>Favorite Articles</h3>   
+                        <div className="article-card-container">
+                                        {
+                    this.props.likes.map(liked => {
+                        const articleObj = this.props.articles.find(article => article.id === liked.article_id)
+                        return  <ArticleCard deleteLikes={this.props.deleteLikes} article={articleObj} likedId={liked.id}/>
+                    })
+                    }
+                    </div>
                 </Fragment>
 			)
 		} else {
