@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Grid, Segment, Image, Loader } from 'semantic-ui-react'
+import LikeCard from './LikeCard'
 
 class Profile extends React.Component{
     state={
@@ -23,7 +24,8 @@ class Profile extends React.Component{
      const { user } = this.state
 		if(user){
 			return (
-				<Grid columns={2} centered>
+                <Fragment>
+				<Grid columns={2} positon="left">
 					<Grid.Column width={3}>
                     This is the Profile Page
 						<Segment>
@@ -32,6 +34,17 @@ class Profile extends React.Component{
 						</Segment>
 					</Grid.Column>
 				</Grid>
+                <Segment>
+                            <h3>Favorite Articles</h3>
+                                <div className="liked-card-container">{this.state.user.likes.map(liked=>{
+                                    return  <LikeCard 
+                                    user={this.state.user}
+                                    article={liked.article}
+                                    />
+                                })}
+                                </div>
+                        </Segment>
+                </Fragment>
 			)
 		} else {
 			return <Loader />

@@ -15,7 +15,9 @@ class App extends React.Component{
     loading: true, 
     filter: "",
     selectedCategory: null, 
-    currentUser: null
+    selectedArticle: [],
+    currentUser: null,
+    likes: []
   }
 
   componentDidMount(){
@@ -27,7 +29,7 @@ class App extends React.Component{
     .then(article=>{
       this.setState({
         articles: article,
-        selectedArticles: article
+        // selectedArticles: article
       })
     })
     const token=localStorage.getItem("token")
@@ -98,6 +100,19 @@ class App extends React.Component{
     return selected
   }
 
+  addLikes = selectedArticle => {
+    console.log(selectedArticle)
+    this.setState({
+      likes: [selectedArticle, ...this.state.likes]
+    })
+  }
+
+  selectedArticle = article => {
+    console.log(article)
+    this.setState({
+      selectedArticle: article
+    })
+  }
   
   render(){
     // {this.state.articles.filter(article=>{
@@ -135,7 +150,11 @@ class App extends React.Component{
          />
         <MainContainer
         articles={this.categoryFilter()}
-        filter={this.state.filter} />
+        filter={this.state.filter}
+        addLikes={this.addLikes}
+        currentUser={this.state.currentUser}
+        selectedArticle={this.selectedArticle}
+        />
           </Fragment>
           }}>
           </Route>

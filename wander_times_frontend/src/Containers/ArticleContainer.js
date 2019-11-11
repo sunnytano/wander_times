@@ -8,6 +8,9 @@ class ArticleContainer extends React.Component{
            return <ArticleCard
                 key={article.id}
                 article={article}
+                addLikes={this.props.addLikes}
+                currentUser={this.props.currentUser}
+                selectedArticle={this.props.selectedArticle}
             />
         })
         return(

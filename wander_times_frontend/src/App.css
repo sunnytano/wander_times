@@ -24,6 +24,14 @@ body {
   padding: 25px 2% 2em 2%;
 }
 
+.liked-card-container {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  align-content: space-between;
+  margin: auto;
+  padding: 25px 2% 2em 2%;
+}
+
 #category-container {
   width: 100vw;
   height: 26vh;

@@ -1,6 +1,7 @@
 import React from 'react'
 import ArticleContainer from './ArticleContainer'
 
+
 class MainContainer extends React.Component{
     render(){
  
@@ -11,6 +12,10 @@ class MainContainer extends React.Component{
             articles={this.props.articles.filter(article=>{
                 return article.title.toLowerCase().includes(this.props.filter.toLowerCase())
             })}      
+            articles={this.props.articles}
+            addLikes={this.props.addLikes}
+            currentUser={this.props.currentUser}
+            selectedArticle={this.props.selectedArticle}
         />
             </div>
         )
