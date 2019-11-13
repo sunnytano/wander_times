@@ -28,7 +28,6 @@ class App extends React.Component{
     .then(article=>{
       this.setState({
         articles: article,
-        // selectedArticles: article
       })
     })
     const token=localStorage.getItem("token")
@@ -54,8 +53,7 @@ class App extends React.Component{
 
   setCurrentUser = user =>{
     this.setState({
-      currentUser: user,
-      likes: user.likes
+      currentUser: user
     })
   }
 
@@ -97,7 +95,7 @@ class App extends React.Component{
         selected= this.state.articles
         break;
     }
-    return selected
+   return selected
   }
 
   addLikes = selectedArticle => {
@@ -107,22 +105,6 @@ class App extends React.Component{
     })
   }
 
-    deleteLikes = articleId => {
-    let url= `http://localhost:3010/api/v1/likes/${articleId}`
-    fetch(url,{
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
-    })
-    .then(()=>{
-      let filtered=this.state.likes.filter(liked=>liked.id !== articleId)
-      this.setState({
-        likes: filtered
-      })
-    })
-  }
 
   selectedArticle = article => {
     console.log(article)
@@ -134,8 +116,7 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        <h1 href="/" style={{textAlign:"center", color: "dark grey"}}> THE WANDER TIMES
-        </h1>
+        <h1 href="/" style={{textAlign:"center", color: "dark grey"}}> THE WANDER TIMES </h1>
         <NavContainer currentUser={this.state.currentUser}
                       handleSearch={this.handleSearch}
                       logout={this.logout}
@@ -146,7 +127,7 @@ class App extends React.Component{
                     return <Profile
                     deleteLikes={this.deleteLikes}
                     likes={this.state.likes}
-                    articles={this.state.articles}
+                    articles={this.categoryFilter()}
                     selectedArticle={this.selectedArticle}
                     deleteLikes={this.deleteLikes}
                   {...routerProps}

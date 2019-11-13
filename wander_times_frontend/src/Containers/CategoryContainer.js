@@ -7,6 +7,7 @@ class CategoryContainer extends React.Component{
             <div id="category-container">
                 <CategoryCard 
                         changeCategory={this.props.changeCategory}
+                        categoryFilter={this.props.categoryFilter}
                 />
             </div>
         )

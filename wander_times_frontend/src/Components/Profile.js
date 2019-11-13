@@ -19,7 +19,18 @@ class Profile extends React.Component{
         })
     }
 
-    render(){
+    deleteLikes = remLike => {
+        console.log("DELETING")
+        const newLikes = this.state.user.likes.filter(liked=>liked.id !== remLike)
+        let update = {...this.state.user, likes: newLikes}
+        if(window.confirm("delete?")){
+        this.setState({
+          user: update
+          })
+        }
+      }
+    
+    render(){  
     const { user } = this.state
 		if(user){
 			return (
@@ -36,10 +47,16 @@ class Profile extends React.Component{
                             <h3>Favorite Articles</h3>   
                         <div className="article-card-container">
                                         {
-                    this.props.likes.map(liked => {
-                        const articleObj = this.props.articles.find(article => article.id === liked.article_id)
-                        return  <ArticleCard deleteLikes={this.props.deleteLikes} article={articleObj} likedId={liked.id}/>
-                    })
+                        this.state.user.likes.map(liked => {
+                        // debugger
+                        return  <ArticleCard selectedArticle={this.props.selectedArticle} 
+                                             deleteLikes={this.deleteLikes} 
+                                             likes={liked.id} 
+                                             remove={this.remove}
+                                             article={liked.article}
+                                           
+                                />
+                        })
                     }
                     </div>
                 </Fragment>

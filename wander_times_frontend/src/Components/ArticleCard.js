@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, Button, Image, Form } from 'semantic-ui-react'
 
-class ArticleCard extends React.Component{
- 
+class ArticleCard extends React.Component {
+
     handleSubmit = (event, user_id, article_id) => {
         event.preventDefault()
         let url="http://localhost:3010/api/v1/likes"
@@ -19,11 +19,30 @@ class ArticleCard extends React.Component{
             })
         })
         .then(res=>res.json())
-        .then(response=>this.props.addLikes(response))
+        .then(response=>
+            this.props.addLikes(response))
+    }
+
+    handleDelete = articleId => {
+        let url= `http://localhost:3010/api/v1/likes/${articleId}`
+        fetch(url,{
+          method: "DELETE",
+          headers: { 
+            "Content-Type": "application/json"
+          }
+        })
+        .then(()=>{
+            this.props.deleteLikes(articleId)
+        })
+    }
+
+    handleClick = () => {
+        this.props.selectedArticle(this.props.article)
     }
 
     render(){
-        // console.log(this.props)
+        console.log(this.props.article)
+        // console.log("currentUser", this.props.currentUser.id, "articleID", this.props.article.id)
         const { title, author, overview, image, url } = this.props.article
         return(
             <Card onClick={this.handleClick}>
@@ -42,10 +61,9 @@ class ArticleCard extends React.Component{
                 ?
                  <Button onClick={(event)=>this.handleSubmit(event, this.props.currentUser.id, this.props.article.id)} className="ui button">Add Favorite</Button>
                 :
-                 <Button onClick={()=>{this.props.deleteLikes(this.props.likedId)}} className="ui button">Remove Favorite</Button>
+                 <Button onClick={()=>{this.handleDelete(this.props.likes)}} className="ui button">Remove Favorite</Button>
             }
         </Card>
-            
         )
     }
 }

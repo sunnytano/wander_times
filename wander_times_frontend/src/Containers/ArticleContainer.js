@@ -15,6 +15,7 @@ class ArticleContainer extends React.Component{
                 selectedArticle={this.props.selectedArticle}
             />
         })
+
         return(
             <div className="article-card-container">
                 {articles}
