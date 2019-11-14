@@ -11,7 +11,6 @@ import { Switch, Route, } from 'react-router-dom'
 class App extends React.Component{
   state = {
     articles: [],
-    selectedArticles: [],
     loading: true, 
     filter: "",
     selectedCategory: null, 
@@ -61,7 +60,6 @@ class App extends React.Component{
     this.setState({
       currentUser: null
     })
-    this.props.history.push('/')
   }
   // changeFilter = (filterInput) => {
   //   console.log(filterInput)
@@ -132,6 +130,7 @@ class App extends React.Component{
                     articles={this.categoryFilter()}
                     selectedArticle={this.selectedArticle}
                     deleteLikes={this.deleteLikes}
+                    currentUser={this.state.currentUser}
                   {...routerProps}
            />
          }}></Route>

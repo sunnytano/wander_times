@@ -58,6 +58,7 @@ class Profile extends React.Component{
                                              remove={this.remove}
                                              article={liked.article}
                                              exists={exists}
+                                             currentUser={this.props.currentUser}
                                            
                                 />
                         })

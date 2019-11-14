@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Card, Button, Image, Form } from 'semantic-ui-react'
 
 class ArticleCard extends React.Component {
-
+    
     handleSubmit = (event, user_id, article_id) => {
         if(!this.props.likes.find(liked=>liked.article_id === article_id)){
         event.preventDefault()
@@ -59,13 +59,22 @@ class ArticleCard extends React.Component {
                         {overview}
                     </Card.Description>
             </Card.Content>
-            {
-                this.props.addLikes 
+         
+            { 
+                !this.props.currentUser
+                ?
+                null
+                :
+                <Fragment>
+                {this.props.addLikes 
                 ?
                  <Button onClick={(event)=>this.handleSubmit(event, this.props.currentUser.id, this.props.article.id)} className="ui button">Add Favorite</Button>
                 :
                  <Button onClick={()=>{this.handleDelete(this.props.likes.id)}} className="ui button">Remove Favorite</Button>
-            }
+                }
+                 </Fragment>
+        
+        }
         </Card>
         )
     }

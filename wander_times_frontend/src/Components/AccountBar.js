@@ -21,7 +21,8 @@ class AccountBar extends React.Component{
                     src="https://cdn1.iconfinder.com/data/icons/messenger-and-society/16/user_person_avatar_unisex-512.png" alt={this.props.currentUser.username}/>
                     </Link>
                     <Menu.Item>
-                    <Link to='/login' onClick={this.props.logout}>Logout</Link>
+                    <Link to='/' onClick={this.props.logout}
+                    >Logout</Link>
                     </Menu.Item>
                     </Menu.Menu>
             :
