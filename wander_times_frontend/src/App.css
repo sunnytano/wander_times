@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
 
+.black {
+  background-color: black;
+  color:pink;
+}
+
+.white {
+  background-color: white;
+}
+
 .category-button {
   width: 100%;
   text-align: center;

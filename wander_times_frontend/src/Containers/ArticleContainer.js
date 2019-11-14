@@ -1,27 +1,25 @@
-import React from 'react'
-import ArticleCard from '../Components/ArticleCard'
+import React from "react";
+import ArticleCard from "../Components/ArticleCard";
 
-class ArticleContainer extends React.Component{
- 
-    render(){
-        let articles = this.props.articles.map(article=>{
-           return <ArticleCard
-                key={article.id}
-                likes={this.props.likes}
-                article={article}
-                addLikes={this.props.addLikes}
-                deleteLikes={this.props.deleteLikes}
-                currentUser={this.props.currentUser}
-                selectedArticle={this.props.selectedArticle}
-            />
-        })
+class ArticleContainer extends React.Component {
+  render() {
+    let articles = this.props.articles.map(article => {
+      return (
+        <ArticleCard
+          key={article.id}
+          likes={this.props.likes}
+          article={article}
+          addLikes={this.props.addLikes}
+          deleteLikes={this.props.deleteLikes}
+          currentUser={this.props.currentUser}
+          selectedArticle={this.props.selectedArticle}
+          backgroundColor={this.props.backgroundColor}
+        />
+      );
+    });
 
-        return(
-            <div className="article-card-container">
-                {articles}
-            </div>
-        )
-    }
+    return <div className="article-card-container">{articles}</div>;
+  }
 }
 
-export default ArticleContainer
+export default ArticleContainer;
