@@ -4,6 +4,7 @@ import { Card, Button, Image, Form } from 'semantic-ui-react'
 class ArticleCard extends React.Component {
 
     handleSubmit = (event, user_id, article_id) => {
+        if(!this.props.likes.find(liked=>liked.article_id === article_id)){
         event.preventDefault()
         let url="http://localhost:3010/api/v1/likes"
         fetch(url,{
@@ -21,6 +22,7 @@ class ArticleCard extends React.Component {
         .then(res=>res.json())
         .then(response=>
             this.props.addLikes(response))
+    }
     }
 
     handleDelete = articleId => {
@@ -41,7 +43,8 @@ class ArticleCard extends React.Component {
     }
 
     render(){
-        console.log(this.props.article)
+        console.log(this.props.likes)
+        // console.log(this.props.article)
         // console.log("currentUser", this.props.currentUser.id, "articleID", this.props.article.id)
         const { title, author, overview, image, url } = this.props.article
         return(
@@ -57,11 +60,11 @@ class ArticleCard extends React.Component {
                     </Card.Description>
             </Card.Content>
             {
-                this.props.addLikes
+                this.props.addLikes 
                 ?
                  <Button onClick={(event)=>this.handleSubmit(event, this.props.currentUser.id, this.props.article.id)} className="ui button">Add Favorite</Button>
                 :
-                 <Button onClick={()=>{this.handleDelete(this.props.likes)}} className="ui button">Remove Favorite</Button>
+                 <Button onClick={()=>{this.handleDelete(this.props.likes.id)}} className="ui button">Remove Favorite</Button>
             }
         </Card>
         )

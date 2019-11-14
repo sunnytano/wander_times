@@ -99,10 +99,12 @@ class App extends React.Component{
   }
 
   addLikes = selectedArticle => {
-    console.log(selectedArticle)
+    if(this.state.likes.includes(selectedArticle) === false){
+    // console.log(selectedArticle)
     this.setState({
       likes: [selectedArticle, ...this.state.likes]
     })
+  }
   }
 
 

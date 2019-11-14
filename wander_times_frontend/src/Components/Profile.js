@@ -23,11 +23,9 @@ class Profile extends React.Component{
         console.log("DELETING")
         const newLikes = this.state.user.likes.filter(liked=>liked.id !== remLike)
         let update = {...this.state.user, likes: newLikes}
-        if(window.confirm("delete?")){
         this.setState({
           user: update
           })
-        }
       }
     
     render(){  
@@ -49,11 +47,17 @@ class Profile extends React.Component{
                                         {
                         this.state.user.likes.map(liked => {
                         // debugger
-                        return  <ArticleCard selectedArticle={this.props.selectedArticle} 
+
+                        const exists = this.props.articles.find(article =>  article.id === liked.article_id)
+
+                        return  <ArticleCard selectedArticle=
+                        
+                        {this.props.selectedArticle} 
                                              deleteLikes={this.deleteLikes} 
-                                             likes={liked.id} 
+                                             likes={liked} 
                                              remove={this.remove}
                                              article={liked.article}
+                                             exists={exists}
                                            
                                 />
                         })
