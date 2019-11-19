@@ -14,7 +14,6 @@ class CategoryCard extends React.Component {
             <button
               onClick={this.handleFilter}
               value="tech"
-              name="tech"
               className="category-card-tech"
             >
               TECH
@@ -24,7 +23,6 @@ class CategoryCard extends React.Component {
             <button
               onClick={this.handleFilter}
               value="travel"
-              name="travel"
               className="category-card-travel"
             >
               TRAVEL
