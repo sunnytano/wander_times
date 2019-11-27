@@ -1,9 +1,10 @@
 # The Wander Times
+
 A news website for the techie wanderlust. The app includes two main categories, tech and travel. These are my
 two favorite topics to read online. I created a web app using the News API for the most up to date articles that users can favorite, save and remove. The app was created with a React front end and Ruby on Rails backend with full authentication. The backend can be found here https://github.com/sunnytano/wander_times_backend.
 
-## Screenshot 
-![Landing](https://raw.githubusercontent.com/sunnytano/wander_times/master/wander_times_frontend/public/WanderTimes.png)
+## 
+![Landing](https://media.giphy.com/media/QvMUP0JsvTWUG1tX1U/giphy.gif)
 
 ## Features
 
